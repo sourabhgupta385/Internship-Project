@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+  {% load static %}
+  <link rel="stylesheet" type="text/css" href="{% static 'intern/styles.css' %}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <title>Business News</title>
+</head>
+<body>
+<div class="w3-sidebar w3-light-grey w3-bar-block" style="width:20%">
+  <h3 class="w3-bar-item">Categories</h3>
+  <a href="{% url 'intern:index' %}" class="w3-bar-item w3-button">Top Stories</a>
+  <a href="{% url 'intern:bollywood' %}" class="w3-bar-item w3-button">Bollywood</a>
+  <a href="{% url 'intern:education' %}" class="w3-bar-item w3-button">Education</a>
+  <a href="{% url 'intern:entertainment' %}" class="w3-bar-item w3-button">Entertainment</a>
+  <a href="{% url 'intern:health' %}" class="w3-bar-item w3-button">Health</a>
+  <a href="{% url 'intern:india' %}" class="w3-bar-item w3-button">India</a>
+  <a href="{% url 'intern:lifestyle' %}" class="w3-bar-item w3-button">Life Style</a>
+  <a href="{% url 'intern:realstate' %}" class="w3-bar-item w3-button">Real State</a>
+  <a href="{% url 'intern:sports' %}" class="w3-bar-item w3-button">Sports</a>
+  <a href="{% url 'intern:technology' %}" class="w3-bar-item w3-button">Technology</a>
+  <a href="{% url 'intern:world' %}" class="w3-bar-item w3-button">World</a> 
+  <div class="w3-text-grey sharethis">
+  <span class="fa fa-facebook-square fa-2x" style="left: 50px;"></span>
+  <span class="fa fa-twitter-square fa-2x" style="left: 100px;"></span>
+  <span class="fa fa-google-plus-square fa-2x" style="left: 150px;"></span>
+  </div> 
+</div>
+<div style="margin-left:20%">
+<div class="w3-container w3-teal">
+  <h1>Business Stories</h1>
+</div>
+<div class="w3-container">
+<table class="w3-table w3-striped  w3-hoverable w3-centered">
+
+  {% for cate ,prov , post_link , post_title , post_pub in zipped_data %}
+        <tr>
+        <td class = "w3-small" style="padding-top: 15px; font-weight: lighter;">{{prov}}</td>
+        <td ><a href="{{post_link}}" style="text-decoration:none">{{post_title}}</a></td>
+        <td class = "w3-tiny" style="padding-left: 20px; padding-top: 15px;">{{ post_pub|date:"h:i A" }}</td>
+        </tr>
+  {% endfor %} 
+</table>           
+</div>
+</body>
+</html>
